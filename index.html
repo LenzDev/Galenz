@@ -1,63 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Love You</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Love You</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="asset/css/style.css">
 </head>
 <body>
     <div class="wrapper">
         <div class="container">
-            <div class="main">
-                <section id="testimonials">
-                    <div class="text-container">
-                        <div class="row">
-                            <div class="two columns header-col">
-                                <h1><span>Quotes</span></h1>
-                            </div>
-                            <div class="ten columns flex-container">
-                                <div class="flexslider">
-                                    <ul class="slides">
-                                        <li>
-                                            <blockquote>
-                                                <p>
-                                                    “Dalam cahayamu aku belajar bagaimana mencintai. Dalam kecantikanmu, bagaimana membuat puisi. Kamu menari di dalam dadaku di mana tidak ada seorang pun yang melihatmu, tetapi kadang-kadang aku melihatmu, dan itu sudah cukup.”
-                                                </p>
-                                                <cite>Rumi</cite>
-                                            </blockquote>
-                                        </li>
-                                        <li>
-                                            <blockquote>
-                                                <p>
-                                                    “Dia turun, berusaha untuk tidak memandangnya lama-lama, seolah-olah dia adalah matahari, namun dia melihatnya, seperti matahari, bahkan tanpa memandang.”
-                                                </p>
-                                                <cite>Leo Tolstoy, Anna Karenina</cite>
-                                            </blockquote>
-                                        </li>
-                                        <li>
-                                            <blockquote>
-                                                <p>
-                                                    “Saya telah menantikan kesempatan ini selama lebih dari setengah abad, untuk mengulangi kepada Anda sekali lagi sumpah kesetiaan abadi dan cinta yang tak terhingga.”
-                                                </p>
-                                                <cite>Gabriel García Márquez, Love In The Time Of Cholera</cite>
-                                            </blockquote>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <section id="testimonials">
+                <h1><span>Quotes</span></h1>
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <blockquote>
+                                <p>“Dalam cahayamu aku belajar bagaimana mencintai...”</p>
+                                <cite>Rumi</cite>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>“Dia turun, berusaha untuk tidak memandangnya lama-lama...”</p>
+                                <cite>Leo Tolstoy, Anna Karenina</cite>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>“Saya telah menantikan kesempatan ini selama lebih dari setengah abad...”</p>
+                                <cite>Gabriel García Márquez</cite>
+                            </blockquote>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
             <ul class="bg-bubbles">
-                <li><div class="heart pulse2">♥</div></li>
-                <li><div class="heart pulse2">♥</div></li>
-                <li><div class="heart pulse2">♥</div></li>
-                <li><div class="heart pulse2">♥</div></li>
-                <li><div class="heart pulse2">♥</div></li>
-                <li><div class="heart pulse2">♥</div></li>
-                <li><div class="heart pulse2">♥</div></li>
                 <li><div class="heart pulse2">♥</div></li>
                 <li><div class="heart pulse2">♥</div></li>
                 <li><div class="heart pulse2">♥</div></li>
@@ -70,26 +49,35 @@
         Your browser does not support the audio element.
     </audio>
 
-    <script>
-        function playAudio() {
-            var audio = document.getElementById('background-audio');
-            if (audio.paused) {
-                audio.play().catch(function(error) {
-                    console.log('Audio playback failed:', error);
-                });
-            }
-            document.removeEventListener('click', playAudio);
-            document.removeEventListener('touchstart', playAudio);
-            document.removeEventListener('touchend', playAudio);
-            document.removeEventListener('touchmove', playAudio);
-        }
+    <button id="play-button" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; font-size: 16px; background: red; color: white; border: none; border-radius: 5px; display: none;">
+        Play Music
+    </button>
 
-        document.addEventListener('click', playAudio);
-        document.addEventListener('touchstart', playAudio);
-        document.addEventListener('touchend', playAudio);
-        document.addEventListener('touchmove', playAudio);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-audio');
+            var playButton = document.getElementById('play-button');
+
+            function playAudio() {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        playButton.style.display = 'none';
+                    }).catch(error => console.log('Gagal memutar audio:', error));
+                }
+            }
+
+            setTimeout(() => {
+                if (audio.paused) {
+                    playButton.style.display = 'block';
+                    playButton.addEventListener('click', playAudio);
+                }
+            }, 500);
+
+            document.addEventListener('pointerdown', playAudio);
+        });
     </script>
-    <script>window.jQuery || document.write('<script src="asset/js/jquery-1.10.2.min.js"><\/script>')</script>
+
+    <script src="asset/js/jquery-1.10.2.min.js"></script>
     <script src="asset/js/jquery.flexslider.js"></script>
     <script src="asset/js/init.js"></script>
 </body>
