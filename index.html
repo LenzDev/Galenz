@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love You</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="asset/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="main">
+                <section id="testimonials">
+                    <div class="text-container">
+                        <div class="row">
+                            <div class="two columns header-col">
+                                <h1><span>Quotes</span></h1>
+                            </div>
+                            <div class="ten columns flex-container">
+                                <div class="flexslider">
+                                    <ul class="slides">
+                                        <li>
+                                            <blockquote>
+                                                <p>
+                                                    “Dalam cahayamu aku belajar bagaimana mencintai. Dalam kecantikanmu, bagaimana membuat puisi. Kamu menari di dalam dadaku di mana tidak ada seorang pun yang melihatmu, tetapi kadang-kadang aku melihatmu, dan itu sudah cukup.”
+                                                </p>
+                                                <cite>Rumi</cite>
+                                            </blockquote>
+                                        </li>
+                                        <li>
+                                            <blockquote>
+                                                <p>
+                                                    “Dia turun, berusaha untuk tidak memandangnya lama-lama, seolah-olah dia adalah matahari, namun dia melihatnya, seperti matahari, bahkan tanpa memandang.”
+                                                </p>
+                                                <cite>Leo Tolstoy, Anna Karenina</cite>
+                                            </blockquote>
+                                        </li>
+                                        <li>
+                                            <blockquote>
+                                                <p>
+                                                    “Saya telah menantikan kesempatan ini selama lebih dari setengah abad, untuk mengulangi kepada Anda sekali lagi sumpah kesetiaan abadi dan cinta yang tak terhingga.”
+                                                </p>
+                                                <cite>Gabriel García Márquez, Love In The Time Of Cholera</cite>
+                                            </blockquote>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <ul class="bg-bubbles">
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+                <li><div class="heart pulse2">♥</div></li>
+            </ul>
+        </div>
+    </div>
+
+    <audio id="background-audio" style="display:none;" loop>
+        <source src="asset/audio/musik.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var audio = document.getElementById("background-audio");
+
+            function playAudio() {
+                if (audio.paused) {
+                    audio.play().catch(function(error) {
+                        console.log('Audio playback failed:', error);
+                    });
+                }
+            }
+
+            // Tambahkan event listener secara global
+            document.addEventListener("click", playAudio);
+            document.addEventListener("touchstart", playAudio);
+        });
+    </script>
+    <script>window.jQuery || document.write('<script src="asset/js/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="asset/js/jquery.flexslider.js"></script>
+    <script src="asset/js/init.js"></script>
+</body>
+</html>
